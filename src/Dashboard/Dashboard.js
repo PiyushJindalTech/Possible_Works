@@ -37,8 +37,12 @@ export default function Dashboard() {
         const filterType = filterTypeRef.current.value;
         const filteredProduct = ProductData.filter(p => p[filterType] === filterValue)
         setProduct(filteredProduct)
+        filterValueRef.current.value = ""
     }
 
+    const onResetHandler = () =>{
+        setProduct(ProductData)
+    }
     return (
         <div>
             <div>Product</div>
@@ -54,6 +58,7 @@ export default function Dashboard() {
                     <option value="Popularity">Popularity</option>
                 </select>
                 <input type="button" value="Search" onClick={onSearchHandler} />
+                <input type="button" value="Reset" onClick={onResetHandler} />
             </div>
 
             <table>
